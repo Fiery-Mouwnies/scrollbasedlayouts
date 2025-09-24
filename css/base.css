@@ -75,10 +75,9 @@ body {
 
 .gallery--switch.gallery--grid6 .gallery__item {
 	grid-area: 2 / 2 / 3 / 3;
+	opacity: 0;
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 	border-radius: 0;
-	opacity: 0;
-	transition: opacity 1s ease-out;
 }
 
 .gallery--switch.gallery--grid6 .gallery__item.pos-6 {
