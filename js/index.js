@@ -97,8 +97,8 @@ const scroll = () => {
     if (galleryElement) {
         triggerFlipOnScroll(galleryElement, { 
             flip: { absolute: true, scale: false }, 
-            scrollTrigger: { start: 'center center', end: '+=300%' }, 
-            stagger: 0.05 
+            scrollTrigger: { start: 'center center', end: '+=500%' }, 
+            stagger: 0.08 
         });
     }
 };
