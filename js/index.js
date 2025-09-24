@@ -90,28 +90,18 @@ const triggerFlipOnScroll = (galleryEl, options) => {
 	}
 };
 
-// Function to apply scroll-triggered animations to various galleries
-// Apply scroll-triggered animations to each gallery with specific settings
+// Function to apply scroll-triggered animations to the gallery
 const scroll = () => {
-	// Define the gallery IDs and their options
-    const galleries = [
-        { id: '#gallery-1', options: { flip: { absoluteOnLeave: true, scale: false } } },
-        { id: '#gallery-2' },
-        { id: '#gallery-3', options: { flip: { absolute: true, scale: false }, scrollTrigger: { start: 'center center', end: '+=900%' }, stagger: 0.05 } },
-        { id: '#gallery-4' },
-        { id: '#gallery-5' },
-        { id: '#gallery-6' },
-        { id: '#gallery-7' },
-        { id: '#gallery-8', options: { flip: { scale: false } } },
-        { id: '#gallery-9' },
-    ];
-
-    // Loop through the galleries and apply the scroll-triggered animations
-    galleries.forEach(gallery => {
-        const galleryElement = document.querySelector(gallery.id);
-        triggerFlipOnScroll(galleryElement, gallery.options);
-    });
-}
+    // Apply the scroll-triggered animation for gallery-3
+    const galleryElement = document.querySelector('#gallery-3');
+    if (galleryElement) {
+        triggerFlipOnScroll(galleryElement, { 
+            flip: { absolute: true, scale: false }, 
+            scrollTrigger: { start: 'center center', end: '+=900%' }, 
+            stagger: 0.05 
+        });
+    }
+};
 
 // Preload images, initialize smooth scrolling, apply scroll-triggered animations, and remove loading class from body
 preloadImages('.gallery__item').then(() => {
