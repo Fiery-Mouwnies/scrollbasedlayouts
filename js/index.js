@@ -109,7 +109,14 @@ const scroll = () => {
 // Preload images, initialize smooth scrolling, apply scroll-triggered animations, and remove loading class from body
 // Temporarily bypass preloadImages to test if the page loads
 // preloadImages('.gallery__item').then(() => {
+	console.log("Attempting to initialize page and remove loading class...");
+	
+	try {
 	initSmoothScrolling();
 	scroll();
 	document.body.classList.remove('loading');
+		console.log("Loading class removal attempted.");
+	} catch (error) {
+		console.error("Error during page initialization:", error);
+	}
 // });
