@@ -27,11 +27,89 @@
         </div>
     </main>
 
+    <!-- Load GSAP and plugins from CDN for reliability -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
     <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/index.js"></script>
+    
+    <!-- Simple inline script to ensure it works -->
+    <script>
+        console.log('Scripts loading...');
+        
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM ready');
+            
+            // Check if libraries loaded
+            if (typeof gsap === 'undefined') {
+                console.error('GSAP not loaded');
+                return;
+            }
+            if (typeof Lenis === 'undefined') {
+                console.error('Lenis not loaded');
+                return;
+            }
+            if (typeof imagesLoaded === 'undefined') {
+                console.error('imagesLoaded not loaded');
+                return;
+            }
+            
+            console.log('All libraries loaded successfully');
+            
+            // Register GSAP plugins
+            gsap.registerPlugin(Flip, ScrollTrigger);
+            console.log('GSAP plugins registered');
+            
+            // Remove loading class immediately to test visibility
+            document.body.classList.remove('loading');
+            console.log('Loading class removed - page should be visible now');
+            
+            // Initialize smooth scrolling
+            const lenis = new Lenis({
+                lerp: 0.1,
+                smoothWheel: true
+            });
+            
+            lenis.on('scroll', () => ScrollTrigger.update());
+            
+            const scrollFn = (time) => {
+                lenis.raf(time);
+                requestAnimationFrame(scrollFn);
+            };
+            requestAnimationFrame(scrollFn);
+            
+            console.log('Smooth scrolling initialized');
+            
+            // Simple test animation
+            const galleryElement = document.querySelector('#gallery-6');
+            if (galleryElement) {
+                console.log('Gallery element found, setting up animation');
+                
+                // Add switch class temporarily to see final state
+                galleryElement.classList.add('gallery--switch');
+                const flipstate = Flip.getState(galleryElement.querySelectorAll('.gallery__item, .caption'), {props: 'filter, opacity'});
+                galleryElement.classList.remove('gallery--switch');
+                
+                // Create animation
+                Flip.to(flipstate, {
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: galleryElement,
+                        start: 'center center',
+                        end: '+=500%',
+                        pin: galleryElement.parentNode,
+                        scrub: true,
+                    },
+                    stagger: 0.08
+                });
+                
+                console.log('Animation created successfully');
+            } else {
+                console.error('Gallery element not found');
+            }
+        });
+    </script>
 </body>
 </html>
