@@ -8,6 +8,9 @@ gsap.registerPlugin(Flip, ScrollTrigger);
 const preloadImages = (selector = 'img') => {
     return new Promise((resolve) => {
         imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
+    }
+    )
+}
 // Define a variable that will store the Lenis smooth scrolling object
 let lenis;
 
