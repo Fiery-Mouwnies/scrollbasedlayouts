@@ -92,12 +92,12 @@ const triggerFlipOnScroll = (galleryEl, options) => {
 
 // Function to apply scroll-triggered animations to the gallery
 const scroll = () => {
-    // Apply the scroll-triggered animation for gallery-3
-    const galleryElement = document.querySelector('#gallery-3');
+    // Apply the scroll-triggered animation for gallery-6
+    const galleryElement = document.querySelector('#gallery-6');
     if (galleryElement) {
         triggerFlipOnScroll(galleryElement, { 
             flip: { absolute: true, scale: false }, 
-            scrollTrigger: { start: 'center center', end: '+=900%' }, 
+            scrollTrigger: { start: 'center center', end: '+=300%' }, 
             stagger: 0.05 
         });
     }
