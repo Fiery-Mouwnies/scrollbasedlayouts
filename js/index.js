@@ -1,6 +1,9 @@
 // Import the necessary function for preloading images
 import { preloadImages } from './utils.js';
 
+// Register GSAP plugins
+gsap.registerPlugin(Flip, ScrollTrigger);
+
 // Define a variable that will store the Lenis smooth scrolling object
 let lenis;
 
