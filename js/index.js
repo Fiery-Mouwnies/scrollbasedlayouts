@@ -1,5 +1,12 @@
-// Import the necessary function for preloading images
-import { preloadImages } from './utils.js';
+// Load GSAP plugins
+gsap.registerPlugin(Flip, ScrollTrigger);
+
+// Preload images function
+const preloadImages = (selector = 'img') => {
+    return new Promise((resolve) => {
+        imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
+    });
+};
 
 // Define a variable that will store the Lenis smooth scrolling object
 let lenis;
