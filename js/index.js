@@ -107,8 +107,9 @@ const scroll = () => {
 };
 
 // Preload images, initialize smooth scrolling, apply scroll-triggered animations, and remove loading class from body
-preloadImages('.gallery__item').then(() => {
+// Temporarily bypass preloadImages to test if the page loads
+// preloadImages('.gallery__item').then(() => {
 	initSmoothScrolling();
 	scroll();
 	document.body.classList.remove('loading');
-});
+// });
